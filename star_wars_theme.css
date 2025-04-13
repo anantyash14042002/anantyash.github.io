@@ -1,0 +1,962 @@
+/* Star Wars Theme - Color Variables */
+:root {
+  --deep-space-black: #0A0E17;
+  --lightsaber-blue: #4BD5EE;
+  --lightsaber-red: #FF5A5A;
+  --stardust-silver: #E5E4E2;
+  --imperial-gray: #3B3B3B;
+  --jedi-gold: #FFD700;
+  --rebel-orange: #FF7B00;
+  --droid-white: #FFFFFF;
+  
+  /* Animation Speeds */
+  --lightsaber-ignite: 0.3s;
+  --hologram-flicker: 3s;
+  --star-twinkle: 4s;
+}
+
+/* Base Styles */
+body {
+  background-color: var(--deep-space-black);
+  background-image: url('images/stars-bg.jpg');
+  background-attachment: fixed;
+  color: var(--stardust-silver);
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(10,14,23,0.2) 0%, rgba(10,14,23,0.8) 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Aurebesh', 'Montserrat', sans-serif;
+  color: var(--lightsaber-blue);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  font-size: 3.5rem;
+  text-shadow: 0 0 10px rgba(75, 213, 238, 0.7);
+}
+
+h2 {
+  font-size: 2.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(to right, var(--lightsaber-blue), transparent);
+}
+
+p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+code {
+  font-family: 'Source Code Pro', monospace;
+  background-color: rgba(59, 59, 59, 0.5);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  color: var(--rebel-orange);
+}
+
+/* Header & Navigation */
+header {
+  padding: 2rem 0;
+  position: relative;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.logo span {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--lightsaber-blue);
+  border-radius: 50%;
+  animation: hologram-glow var(--hologram-flicker) infinite alternate;
+}
+
+@keyframes hologram-glow {
+  0% {
+    box-shadow: 0 0 5px var(--lightsaber-blue), 0 0 10px var(--lightsaber-blue);
+    opacity: 0.8;
+  }
+  50% {
+    box-shadow: 0 0 15px var(--lightsaber-blue), 0 0 20px var(--lightsaber-blue);
+    opacity: 1;
+  }
+  100% {
+    box-shadow: 0 0 5px var(--lightsaber-blue), 0 0 10px var(--lightsaber-blue);
+    opacity: 0.9;
+  }
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  margin: 0 1rem;
+}
+
+nav a {
+  position: relative;
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--stardust-silver);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  transition: color var(--lightsaber-ignite) ease;
+  overflow: hidden;
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--lightsaber-blue);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--lightsaber-ignite) ease;
+}
+
+nav a:hover {
+  color: var(--lightsaber-blue);
+}
+
+nav a:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 0 auto 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+.hero-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at center, rgba(75, 213, 238, 0.2) 0%, rgba(75, 213, 238, 0) 70%);
+  animation: hologram-flicker 4s infinite alternate;
+  pointer-events: none;
+}
+
+.hero-image::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid var(--lightsaber-blue);
+  border-radius: 50%;
+  animation: hologram-scan 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes hologram-scan {
+  0% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+    opacity: 0.8;
+  }
+  10% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 20%, 0% 20%);
+    opacity: 0.6;
+  }
+  50% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    opacity: 0.3;
+  }
+  90% {
+    clip-path: polygon(0% 80%, 100% 80%, 100% 100%, 0% 100%);
+    opacity: 0.6;
+  }
+  100% {
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    opacity: 0.8;
+  }
+}
+
+.hero-title {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(75, 213, 238, 0.7);
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--stardust-silver);
+}
+
+/* Star Wars Crawl Text */
+.crawl-container {
+  perspective: 400px;
+  height: 300px;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+.crawl-text {
+  position: relative;
+  top: 0;
+  transform-origin: 50% 100%;
+  transform: rotateX(25deg);
+  color: var(--jedi-gold);
+  font-size: 1.2rem;
+  text-align: justify;
+  animation: crawl 60s linear;
+}
+
+@keyframes crawl {
+  0% {
+    top: 300px;
+    transform: rotateX(25deg) translateZ(0);
+  }
+  100% {
+    top: -6000px;
+    transform: rotateX(25deg) translateZ(-2500px);
+  }
+}
+
+/* Main Content Sections */
+.section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title h2 {
+  display: inline-block;
+}
+
+.section-title h2::after {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+}
+
+/* About Section - Jedi Archives Style */
+.about {
+  background-color: rgba(10, 14, 23, 0.7);
+  position: relative;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/jedi-archives-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-text {
+  position: relative;
+}
+
+.about-text::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  border: 1px solid var(--lightsaber-blue);
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.skills-container {
+  margin-top: 2rem;
+}
+
+.skill {
+  margin-bottom: 1.5rem;
+}
+
+.skill-name {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.skill-bar {
+  height: 10px;
+  background-color: var(--imperial-gray);
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(to right, var(--lightsaber-blue), var(--rebel-orange));
+  border-radius: 5px;
+  position: relative;
+  animation: skill-fill 2s ease-out forwards;
+  transform-origin: left;
+}
+
+@keyframes skill-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.skill-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: skill-shine 2s infinite linear;
+}
+
+@keyframes skill-shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Work Experience - Galactic Missions */
+.experience {
+  background-color: rgba(10, 14, 23, 0.9);
+  position: relative;
+}
+
+.experience::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/galaxy-map-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: var(--lightsaber-blue);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+  opacity: 0.3;
+  box-shadow: 0 0 15px var(--lightsaber-blue);
+}
+
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -12px;
+  background-color: var(--deep-space-black);
+  border: 4px solid var(--lightsaber-blue);
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+  box-shadow: 0 0 10px var(--lightsaber-blue);
+}
+
+.timeline-item:nth-child(even)::after {
+  left: -12px;
+}
+
+.timeline-content {
+  padding: 20px 30px;
+  background-color: rgba(59, 59, 59, 0.3);
+  position: relative;
+  border-radius: 6px;
+  border: 1px solid rgba(75, 213, 238, 0.3);
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(75, 213, 238, 0.2);
+}
+
+.timeline-date {
+  color: var(--jedi-gold);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-title {
+  color: var(--lightsaber-blue);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.timeline-company {
+  color: var(--rebel-orange);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+/* Projects - Holocron Archives */
+.projects {
+  background-color: rgba(10, 14, 23, 0.8);
+  position: relative;
+}
+
+.projects::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/jedi-temple-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background-color: rgba(59, 59, 59, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(75, 213, 238, 0.2);
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(75, 213, 238, 0.1), transparent, rgba(255, 90, 90, 0.1));
+  z-index: -1;
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(75, 213, 238, 0.3);
+}
+
+.project-card:hover::after {
+  opacity: 1;
+}
+
+.project-card::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--lightsaber-blue), transparent, var(--lightsaber-red));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+}
+
+.project-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.1);
+}
+
+.project-content {
+  padding: 1.5rem;
+}
+
+.project-title {
+  color: var(--lightsaber-blue);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.project-tag {
+  background-color: rgba(75, 213, 238, 0.1);
+  color: var(--lightsaber-blue);
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Contact - Holographic Communicator */
+.contact {
+  background-color: rgba(10, 14, 23, 0.9);
+  position: relative;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/hologram-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.contact-info h3 {
+  color: var(--lightsaber-blue);
+  margin-bottom: 1.5rem;
+}
+
+.contact-links {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-links li {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.contact-links a {
+  color: var(--stardust-silver);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.contact-links a:hover {
+  color: var(--lightsaber-blue);
+}
+
+.contact-links i {
+  margin-right: 0.5rem;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(75, 213, 238, 0.1);
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.contact-links a:hover i {
+  background-color: rgba(75, 213, 238, 0.3);
+}
+
+.contact-form {
+  position: relative;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background-color: rgba(59, 59, 59, 0.3);
+  border: 1px solid rgba(75, 213, 238, 0.3);
+  border-radius: 4px;
+  color: var(--stardust-silver);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--lightsaber-blue);
+  box-shadow: 0 0 10px rgba(75, 213, 238, 0.3);
+}
+
+textarea.form-control {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: transparent;
+  color: var(--lightsaber-blue);
+  border: 2px solid var(--lightsaber-blue);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(75, 213, 238, 0.2), transparent);
+  transition: left 0.7s ease;
+}
+
+.btn:hover {
+  background-color: var(--lightsaber-blue);
+  color: var(--deep-space-black);
+  box-shadow: 0 0 15px var(--lightsaber-blue);
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+/* Footer */
+footer {
+  background-color: rgba(10, 14, 23, 0.95);
+  padding: 3rem 0;
+  text-align: center;
+  position: relative;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(59, 59, 59, 0.5);
+  border-radius: 50%;
+  margin: 0 0.5rem;
+  color: var(--stardust-silver);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background-color: var(--lightsaber-blue);
+  color: var(--deep-space-black);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(75, 213, 238, 0.3);
+}
+
+.copyright {
+  color: var(--stardust-silver);
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Star Animation */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: var(--droid-white);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: twinkle var(--star-twinkle) infinite alternate;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .about-content,
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+  
+  .timeline-item:nth-child(even) {
+    left: 0;
+  }
+  
+  .timeline::after {
+    left: 31px;
+  }
+  
+  .timeline-item::after {
+    left: 15px;
+    right: auto;
+  }
+  
+  .timeline-item:nth-child(even)::after {
+    left: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .section {
+    padding: 4rem 0;
+  }
+  
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 576px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  nav li {
+    margin: 0.5rem 0;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-image {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .section-inner {
+    padding: 0 1rem;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--deep-space-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--imperial-gray);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lightsaber-blue);
+}
